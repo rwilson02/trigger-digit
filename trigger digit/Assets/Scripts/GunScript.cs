@@ -4,22 +4,52 @@ public class GunScript : MonoBehaviour
 {
     public Camera cam;
     public Transform muzzle;
-    public GameObject bulletPrefab;
-    public float DMG = 10f;
-    public float range = 100f;
+    
+    public float cooldown = 1f, timer;
+    public bool restraining;
+    public int restraint = 10;
+
+    float range = 100f;
+
+    private void Start()
+    {
+        timer = cooldown;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        restraining = EvalRestraint();
+
+        
+
+        if (timer < 0)
         {
-            Shoot();
+            Shoot(restraining);
+            timer = cooldown;
+        }
+        else timer -= Time.deltaTime;
+    }
+
+    void Shoot(bool res)
+    {
+        //print(res);
+        if (!res)
+        {
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward * range, out RaycastHit hit))
+            {
+                print(hit.transform.gameObject);
+            }
+        }
+        else
+        {
+            restraint--;
+            print(restraint);
         }
     }
 
-    void Shoot(bool restrain = false)
+    bool EvalRestraint()
     {
-        GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
-        bullet.transform.forward = cam.transform.forward;
+        if (Input.GetButton("Fire1") && restraint > 0) { return true; } else return false;
     }
 }
