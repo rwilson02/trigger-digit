@@ -4,10 +4,12 @@ public class GunScript : MonoBehaviour
 {
     public Camera cam;
     public Transform muzzle;
+    public GameObject flash;
     
     public float cooldown = 1f, timer;
     public bool restraining;
     public int restraint = 10;
+    public float impactForce = 3;
 
     float range = 100f;
 
@@ -34,10 +36,14 @@ public class GunScript : MonoBehaviour
         //print(res);
         if (!res)
         {
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward * range, out RaycastHit hit))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, range))
             {
-                print(hit.transform.gameObject);
+                if(hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(-hit.normal * impactForce);
+                }
             }
+            Instantiate(flash, muzzle, false);
         }
         else
         {

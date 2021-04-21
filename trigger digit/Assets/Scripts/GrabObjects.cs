@@ -27,12 +27,11 @@ public class GrabObjects : MonoBehaviour
             print(held);
         }
 
-        if (held != null 
-            && Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit bit) 
-            && bit.transform != held)
+        if (held != null && Vector3.Distance(cam.transform.position, held.position) > grabRange*2)
         {
             ToggleGrab(held);
         }
+        
     }
 
     void Grasp()

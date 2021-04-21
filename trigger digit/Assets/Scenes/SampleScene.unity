@@ -1064,10 +1064,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
   muzzle: {fileID: 2025003942}
+  flash: {fileID: 5911156188625396258, guid: 47ba7e1b16c15ef4299fffe64d9b6d7c, type: 3}
   cooldown: 1
   timer: 0
   restraining: 0
   restraint: 10
+  impactForce: 200
 --- !u!1 &1697376891
 GameObject:
   m_ObjectHideFlags: 0
