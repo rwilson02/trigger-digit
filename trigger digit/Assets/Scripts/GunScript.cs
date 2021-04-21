@@ -21,8 +21,6 @@ public class GunScript : MonoBehaviour
     {
         restraining = EvalRestraint();
 
-        
-
         if (timer < 0)
         {
             Shoot(restraining);

@@ -7,14 +7,15 @@ public class PlayerMove : MonoBehaviour
     public CharacterController cont;
     public float speed = 1f;
     public float gravity = -9.81f;
-    public float height = 3f;
+    public float jumpHeight = 3f;
+    protected float x, z;
 
     public Transform groundCheck;
     public float groundDist;
     public LayerMask mask;
 
-    Vector3 vel;
-    bool grounded;
+    protected Vector3 vel;
+    protected bool grounded;
 
     // Update is called once per frame
     void Update()
@@ -26,15 +27,15 @@ public class PlayerMove : MonoBehaviour
             vel.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
         cont.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            vel.y = Mathf.Sqrt(-2f * height * gravity);
+            vel.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
         }
 
         vel.y += gravity * Time.deltaTime;
