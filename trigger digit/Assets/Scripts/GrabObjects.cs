@@ -5,16 +5,19 @@ using UnityEngine;
 public class GrabObjects : MonoBehaviour
 {
     public string grabTag = "Grabbable";
+    public string powerTag = "Powerup";
     public KeyCode grabKey;
-    public float grabRange = 1;
+    public float grabRange = 2;
 
     Camera cam;
+    GunScript gun;
     bool grasping = false;
     Transform held;
 
     private void Start()
     {
         cam = Camera.main;
+        gun = GetComponentInChildren<GunScript>();
     }
 
     // Update is called once per frame
@@ -23,8 +26,7 @@ public class GrabObjects : MonoBehaviour
         if (Input.GetKeyDown(grabKey))
         {
             Grasp();
-            print(grasping);
-            print(held);
+            GetPower();
         }
 
         if (held != null && Vector3.Distance(cam.transform.position, held.position) > grabRange*2)
@@ -59,5 +61,14 @@ public class GrabObjects : MonoBehaviour
         }
 
         grasping = !grasping;
+    }
+
+    void GetPower()
+    {
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, grabRange)
+            && hit.transform.CompareTag(powerTag))
+        {
+            hit.transform.GetComponent<JuiceUp>().PowerUp(gun);
+        }
     }
 }
