@@ -7,17 +7,17 @@ public class HumanoidScript : MonoBehaviour
     public int HP = 3;
     public int reputation = 3;
 
-    public void Hit()
+    public void Hit(PlayerScript from = null)
     {
         HP--;
 
         if(HP == 0)
         {
-            Die();
+            Die(from);
         }
     }
 
-    public void Die()
+    public virtual void Die(PlayerScript from = null)
     {
         print("lol bye, from " + gameObject.name);
         gameObject.SetActive(false);

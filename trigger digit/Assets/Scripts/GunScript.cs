@@ -12,9 +12,11 @@ public class GunScript : MonoBehaviour
     public float impactForce = 3;
 
     float range = 100f;
+    PlayerScript gunOwner;
 
     private void Start()
     {
+        gunOwner = GetComponentInParent<PlayerScript>();
         timer = cooldown;
     }
 
@@ -41,6 +43,10 @@ public class GunScript : MonoBehaviour
                 if(hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
+                }
+                if(hit.collider.TryGetComponent(out HumanoidScript hitScript))
+                {
+                    hitScript.Hit(gunOwner);
                 }
             }
             Instantiate(flash, muzzle, false);
