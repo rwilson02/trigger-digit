@@ -11,7 +11,7 @@ public class GunScript : MonoBehaviour
     public int restraint = 10;
     public float impactForce = 3;
 
-    float range = 100f;
+    protected float range = 100f;
     PlayerScript gunOwner;
 
     private void Start()

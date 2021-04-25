@@ -10,14 +10,17 @@ public class EnemyScript : HumanoidScript
     public float visionRange;
     public GameObject player;
     public EnemyGunScript gunScript;
-    public bool LOS = false, initial = true;
+    public bool LOS = false, initial = true, look = false;
     public LayerMask mask;
+    public Animator anim;
 
     GameObject target;
     Ray ray;
 
     private void Update()
     {
+        anim.SetFloat("Velocity", pathfinder.velocity.magnitude);
+
         if (initial && !LOS)
         {
             ray = new Ray(muzzle.position, muzzle.forward);
@@ -30,6 +33,7 @@ public class EnemyScript : HumanoidScript
                 LOS = true;
                 gunScript.shoot = true;
                 target = player;
+                look = true;
             }
         }
         
@@ -39,11 +43,11 @@ public class EnemyScript : HumanoidScript
                     (target.transform.position - transform.position)*2);
             Physics.Raycast(ray, out RaycastHit hit, mask);
             Debug.DrawRay(ray.origin, ray.direction, Color.red);
-            print(hit.collider);
+            //print(hit.collider);
 
             if (LOS)
             {
-                transform.LookAt(target.transform);
+                if (look) { transform.LookAt(target.transform); }
                 
                 if (hit.collider != null && hit.collider.gameObject != player)
                 {
@@ -52,6 +56,7 @@ public class EnemyScript : HumanoidScript
                     pathfinder.isStopped = false;
                     gunScript.shoot = false;
                     LOS = false;
+                    look = false;
                 }
             }
             else if(hit.collider != null && hit.collider.gameObject == player)
@@ -60,6 +65,7 @@ public class EnemyScript : HumanoidScript
                     pathfinder.isStopped = true;
                     gunScript.shoot = true;
                     LOS = true;
+                    look = true;
                 }
             }
         }
