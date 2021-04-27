@@ -29,5 +29,6 @@ public class CanvasScript : MonoBehaviour
         } else restraint.text = gun.restraint.ToString("00");
 
         unacceptableViolence.fillAmount = 1 - (player.reputation/(float)killLimit);
+        hpbar.fillAmount = player.HP / 5f;
     }
 }

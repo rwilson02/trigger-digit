@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class JuiceUp : MonoBehaviour
 {
+    public int restore = 10;
     public void PowerUp(GunScript gun)
     {
-        gun.restraint += 25;
+        gun.restraint += restore;
         Destroy(gameObject);
     }
 }

@@ -17,6 +17,11 @@ public class EnemyScript : HumanoidScript
     GameObject target;
     Ray ray;
 
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerScript>().gameObject;
+    }
+
     private void Update()
     {
         anim.SetFloat("Velocity", pathfinder.velocity.magnitude);
