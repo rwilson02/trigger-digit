@@ -8,13 +8,15 @@ public class CanvasScript : MonoBehaviour
     public PlayerScript player;
     public GunScript gun;
     public Text restraint;
-    public Image hpbar, unacceptableViolence;
+    public Image hpbar, unacceptableViolence, indic;
 
     InnocentScript[] innoList;
     int killLimit;
 
     private void Start()
     {
+        player = FindObjectOfType<PlayerScript>();
+        gun = player.gameObject.GetComponentInChildren<GunScript>();
         innoList = FindObjectsOfType<InnocentScript>();
         killLimit = Mathf.CeilToInt(innoList.Length * 0.70f);
         player.reputation = killLimit;
@@ -23,7 +25,22 @@ public class CanvasScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gun.restraint > 9)
+        indic.fillAmount = Mathf.Lerp(0, 1, gun.timer / gun.cooldown);
+
+        if (!gun.restraining)
+        {
+            if (indic.fillAmount > 0.5)
+            {
+                indic.color = Color.Lerp(Color.yellow, Color.green, (indic.fillAmount - .5f) * 2);
+            }
+            else
+            {
+                indic.color = Color.Lerp(Color.red, Color.yellow, indic.fillAmount * 2);
+            }
+        }
+        else indic.color = Color.cyan;
+
+        if (gun.restraint > 9)
         {
             restraint.text = gun.restraint.ToString("000");
         } else restraint.text = gun.restraint.ToString("00");
