@@ -2338,7 +2338,7 @@ MonoBehaviour:
   groundDist: 0.2
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   Animator: {fileID: 7269163359849811608}
 --- !u!114 &7269163359849811615
 MonoBehaviour:

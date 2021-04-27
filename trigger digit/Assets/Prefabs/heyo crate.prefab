@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2405663732175570705}
   - component: {fileID: 3937051842584227136}
   - component: {fileID: 3937051842584227137}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: heyo crate
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
