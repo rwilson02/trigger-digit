@@ -5,6 +5,7 @@ public class GunScript : MonoBehaviour
     public Camera cam;
     public Transform muzzle;
     public GameObject flash;
+    public LayerMask shootThis;
     
     public float cooldown = 1f, timer;
     public bool restraining;
@@ -40,7 +41,7 @@ public class GunScript : MonoBehaviour
         //print(res);
         if (!res)
         {
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, range))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, range, shootThis))
             {
                 if(hit.rigidbody != null)
                 {

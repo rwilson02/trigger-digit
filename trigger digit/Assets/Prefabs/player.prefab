@@ -2108,6 +2108,7 @@ GameObject:
   - component: {fileID: 7269163359880093040}
   - component: {fileID: 7269163359880093047}
   - component: {fileID: 7269163359880093044}
+  - component: {fileID: 2385278508822487866}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2211,6 +2212,66 @@ MonoBehaviour:
   powerTag: Powerup
   grabKey: 304
   grabRange: 2
+--- !u!114 &2385278508822487866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7269163359880093043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 7269163359880093046}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &7421479137205291105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,26 +2415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 5
   reputation: 3
---- !u!114 &7269163359115784186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7503041365471353561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc4c85f5e1040740817cd02fa526618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 7269163359880093041}
-  muzzle: {fileID: 7269163358776601508}
-  flash: {fileID: 5911156188625396258, guid: 47ba7e1b16c15ef4299fffe64d9b6d7c, type: 3}
-  cooldown: 1
-  timer: 0
-  restraining: 0
-  restraint: 10
-  impactForce: 200
+  pauseTitle: {fileID: 0}
+  pauseSub: {fileID: 0}
 --- !u!82 &709303163932748802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2470,6 +2513,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7269163359115784186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503041365471353561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc4c85f5e1040740817cd02fa526618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 7269163359880093041}
+  muzzle: {fileID: 7269163358776601508}
+  flash: {fileID: 5911156188625396258, guid: 47ba7e1b16c15ef4299fffe64d9b6d7c, type: 3}
+  shootThis:
+    serializedVersion: 2
+    m_Bits: 769
+  cooldown: 1
+  timer: 0
+  restraining: 0
+  restraint: 10
+  impactForce: 200
 --- !u!1 &7678408075354137426
 GameObject:
   m_ObjectHideFlags: 0
