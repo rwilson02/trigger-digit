@@ -13,9 +13,11 @@ public class GunScript : MonoBehaviour
 
     protected float range = 100f;
     PlayerScript gunOwner;
+    protected AudioSource bang;
 
     private void Start()
     {
+        bang = GetComponent<AudioSource>();
         gunOwner = GetComponentInParent<PlayerScript>();
         timer = cooldown;
     }
@@ -50,6 +52,7 @@ public class GunScript : MonoBehaviour
                 }
             }
             Instantiate(flash, muzzle, false);
+            bang.PlayOneShot(bang.clip);
         }
         else
         {

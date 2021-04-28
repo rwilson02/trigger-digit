@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGunScript : GunScript
 {
-    public GameObject bullet;
+    //public GameObject bullet;
     public bool shoot = false;
     public float pause = 0.5f, pauseTmr;
     EnemyScript scr;
@@ -14,6 +14,7 @@ public class EnemyGunScript : GunScript
         timer = cooldown;
         pauseTmr = pause;
         scr = GetComponentInParent<EnemyScript>();
+        bang = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -35,8 +36,6 @@ public class EnemyGunScript : GunScript
 
     void ShootAtWill()
     {
-        
-        Instantiate(flash, muzzle, false);
         if (Physics.Raycast(muzzle.transform.position, muzzle.transform.forward, out RaycastHit hit, range))
         {
             if (hit.rigidbody != null)
@@ -49,5 +48,6 @@ public class EnemyGunScript : GunScript
             }
         }
         Instantiate(flash, muzzle, false);
+        bang.PlayOneShot(bang.clip);
     }
 }

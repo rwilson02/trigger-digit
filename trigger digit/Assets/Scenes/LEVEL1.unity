@@ -13731,6 +13731,14 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 1830581779}
+    - target: {fileID: 3361766995947305239, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b2d7324b968dc6348a4b2c284e31f2cd, type: 3}
+    - target: {fileID: 3361766995947305239, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
 --- !u!114 &3213095760627259884 stripped

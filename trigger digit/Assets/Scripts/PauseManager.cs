@@ -7,7 +7,7 @@ public class PauseManager : MonoBehaviour
     public KeyCode pause;
     public bool paused = false;
     //public bool pausable = false;
-    //public AudioSource burn;
+    public AudioSource burn;
     public GameObject pauseScreen;
     //public JukeScript music;
 
@@ -18,22 +18,32 @@ public class PauseManager : MonoBehaviour
         {
             if (paused)
             {
-                Time.timeScale = 1;
-                Cursor.lockState = CursorLockMode.Locked;
-                pauseScreen.SetActive(false);
-                //music.sauce.UnPause();
-                //burn.UnPause();
+                UnPause();
             }
             else
             {
-                //music.sauce.Pause();
-                //burn.Pause();
-                pauseScreen.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
+                Pause();
             }
 
             paused = !paused;
         }
+    }
+
+    public void Pause()
+    {
+        //music.sauce.Pause();
+        burn.Pause();
+        pauseScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        pauseScreen.SetActive(false);
+        //music.sauce.UnPause();
+        burn.UnPause();
     }
 }

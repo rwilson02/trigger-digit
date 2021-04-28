@@ -10788,6 +10788,14 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3361766995947305239, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 14c7f9eae88e5aa4f9658a92d49963a2, type: 3}
+    - target: {fileID: 3361766995947305239, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3213095762254750905, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfbf558cfc706ce4eba93e6f0ac170a5, type: 3}
