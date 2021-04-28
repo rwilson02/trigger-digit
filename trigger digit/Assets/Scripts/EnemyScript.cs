@@ -52,7 +52,10 @@ public class EnemyScript : HumanoidScript
 
             if (LOS)
             {
-                if (look) { transform.LookAt(target.transform); }
+                if (look) { 
+                    transform.LookAt(target.transform);
+                }
+                //print(look);
                 
                 if (hit.collider != null && hit.collider.gameObject != player)
                 {
@@ -69,8 +72,8 @@ public class EnemyScript : HumanoidScript
                     print("I SEE YOU");
                     pathfinder.isStopped = true;
                     gunScript.shoot = true;
-                    LOS = true;
                     look = true;
+                    LOS = true;
                 }
             }
         }
