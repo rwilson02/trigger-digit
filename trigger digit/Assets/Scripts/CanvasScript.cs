@@ -15,6 +15,7 @@ public class CanvasScript : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         player = FindObjectOfType<PlayerScript>();
         gun = player.gameObject.GetComponentInChildren<GunScript>();
         innoList = FindObjectsOfType<InnocentScript>();
